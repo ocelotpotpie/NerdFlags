@@ -7,6 +7,9 @@ import com.sk89q.worldguard.protection.association.RegionAssociable;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import com.sk89q.worldguard.protection.regions.RegionQuery;
 import com.sk89q.worldguard.session.SessionManager;
+import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
@@ -334,7 +337,7 @@ public class NerdFlagsListener implements Listener {
         if (e.isCancelled() && notifyPlayer && e instanceof PlayerEvent) {
             PlayerEvent playerEvent = (PlayerEvent) e;
             Player player = playerEvent.getPlayer();
-            player.sendMessage(ChatColor.DARK_RED + "You don't have permission to use that in this area.");
+            Audience.audience(player).sendMessage(Component.text("You don't have permission to use that in this area.", NamedTextColor.DARK_RED));
         }
     }
 
